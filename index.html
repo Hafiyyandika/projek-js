@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Kopi Tuku - Tetangga Tuku</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tuku: {
+                            bg: '#F5F2EB',
+                            card: '#FFFFFF',
+                            primary: '#4A3525',
+                            primaryDark: '#352519',
+                            secondary: '#6F4E37',
+                            accent: '#C85A32',
+                            accentHover: '#A84420',
+                            sand: '#E9E2D5',
+                            muted: '#7A6B5D'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F2EB;
+            color: #4A3525;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(#6F4E37 0.6px, transparent 0.6px);
+            background-size: 18px 18px;
+            opacity: 0.08;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between overflow-x-hidden antialiased">
+    <div class="fixed inset-0 bg-pattern pointer-events-none -z-10"></div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-[#F5F2EB]/95 backdrop-blur-md border-b border-tuku-sand shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 sm:px-6 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-10 h-10 rounded-full bg-tuku-accent text-white flex items-center justify-center font-extrabold text-xl shadow-md group-hover:scale-105 transition-transform">
+                    T
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-black text-base sm:text-lg tracking-wider text-tuku-primary leading-none">TOKO KOPI TUKU</span>
+                    <span class="text-[10px] text-tuku-muted tracking-widest uppercase font-semibold">Tetangga Tuku</span>
+                </div>
+            </a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-6 font-semibold text-xs lg:text-sm text-tuku-primary">
+                <a href="#hero" class="hover:text-tuku-accent transition-colors">Beranda</a>
+                <a href="#kalkulator" class="hover:text-tuku-accent transition-colors">Kalkulator Kafein</a>
+                <a href="#menu" class="hover:text-tuku-accent transition-colors">Menu Favorit</a>
+                <a href="#order" class="hover:text-tuku-accent transition-colors">Custom Order</a>
+                <a href="#lokasi" class="hover:text-tuku-accent transition-colors">Lokasi</a>
+            </nav>
+
+            <a href="#order" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-tuku-accent rounded-full hover:bg-tuku-accentHover transition-colors shadow-sm">
+                <i class="fa-solid fa-cart-shopping mr-2"></i>Pesan Sekarang
+            </a>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" aria-label="Toggle Navigation" class="md:hidden text-tuku-primary text-xl p-2 rounded-lg hover:bg-tuku-sand focus:outline-none transition-colors">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-tuku-bg border-b border-tuku-sand px-6 py-4 flex flex-col gap-3 font-semibold text-sm shadow-inner">
+            <a href="#hero" class="mobile-link py-2 border-b border-tuku-sand/50 hover:text-tuku-accent">Beranda</a>
+            <a href="#kalkulator" class="mobile-link py-2 border-b border-tuku-sand/50 hover:text-tuku-accent">Kalkulator Kafein & Rekomendasi</a>
+            <a href="#menu" class="mobile-link py-2 border-b border-tuku-sand/50 hover:text-tuku-accent">Menu Favorit Tetangga</a>
+            <a href="#order" class="mobile-link py-2 border-b border-tuku-sand/50 hover:text-tuku-accent">Racik Pesanan Custom</a>
+            <a href="#lokasi" class="mobile-link py-2 hover:text-tuku-accent">Lokasi Toko Tuku</a>
+            <a href="#order" class="mobile-link mt-2 w-full text-center py-3 text-xs font-bold uppercase tracking-wider text-white bg-tuku-accent rounded-xl shadow-sm">
+                <i class="fa-solid fa-cart-shopping mr-2"></i>Pesan via WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative py-12 md:py-20 px-4 sm:px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <div class="flex-1 text-center md:text-left space-y-5">
+                <span class="inline-block px-3.5 py-1.5 bg-tuku-sand text-tuku-primary text-xs font-bold rounded-full uppercase tracking-wider border border-tuku-secondary/20">
+                    <i class="fa-solid fa-mug-hot text-tuku-accent mr-1.5"></i> Kopi Lokal Indonesia
+                </span>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-tuku-primary leading-tight">
+                    Segelas <span class="text-tuku-accent">Kopi Tetangga</span> Untuk Hari Kamu.
+                </h1>
+                <p class="text-tuku-muted text-sm sm:text-base leading-relaxed max-w-xl mx-auto md:mx-0 font-normal">
+                    Menyajikan hangat khas Toko Kopi Tuku. Dibuat dengan racikan espresso pilihan, gula aren asli, dan semangat silaturahmi antar tetangga.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3.5 pt-2">
+                    <a href="#order" class="w-full sm:w-auto px-7 py-3.5 bg-tuku-primary text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl hover:bg-tuku-primaryDark transition-all text-center shadow-lg hover:shadow-xl">
+                        <i class="fa-solid fa-mug-hot mr-2"></i>Racik Pesananmu
+                    </a>
+                    <a href="#kalkulator" class="w-full sm:w-auto px-7 py-3.5 bg-tuku-sand text-tuku-primary text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl hover:bg-opacity-80 transition-all text-center border border-tuku-secondary/20">
+                        <i class="fa-solid fa-calculator mr-2"></i>Cek Rekomendasi
+                    </a>
+                </div>
+            </div>
+            <div class="flex-1 relative flex justify-center w-full max-w-md">
+                <div class="relative w-full max-w-[320px] sm:max-w-[360px] h-[340px] sm:h-[400px] bg-tuku-sand rounded-3xl overflow-hidden shadow-2xl border-4 border-white flex flex-col justify-end p-6">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-500" style="background-image: url('https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-tuku-primaryDark/90 via-tuku-primaryDark/30 to-transparent"></div>
+                    <div class="relative z-10 bg-white/95 backdrop-blur-md p-4 rounded-2xl text-tuku-primary shadow-lg border border-white">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-extrabold text-sm">Es Kopi Tetangga</span>
+                            <span class="bg-tuku-accent text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded-full shadow-sm">Bestseller</span>
+                        </div>
+                        <p class="text-xs text-tuku-muted">Espresso, Susu Segar, dan Gula Aren Khas Tuku.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FITUR INTERAKTIF 1: KALKULATOR KAFEIN -->
+        <section id="kalkulator" class="py-12 sm:py-16 bg-white/70 border-y border-tuku-sand">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <div class="text-center max-w-xl mx-auto mb-8">
+                    <span class="px-3 py-1 bg-tuku-accent/10 text-tuku-accent text-xs font-bold tracking-widest uppercase rounded-full">Fitur Interaktif #1</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-tuku-primary mt-2">Kalkulator Kafein & Rekomendasi Menu</h2>
+                    <p class="text-tuku-muted text-xs sm:text-sm mt-2">Bingung mau minum apa? Sesuaikan dengan tingkat kantuk dan preferensi rasamu hari ini.</p>
+                </div>
+
+                <div class="bg-white p-5 sm:p-8 rounded-3xl shadow-md border border-tuku-sand">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Input 1: Level Mengantuk -->
+                        <div class="space-y-2">
+                            <label for="sleepinessLevel" class="block text-xs font-extrabold text-tuku-primary uppercase tracking-wider">
+                                <i class="fa-solid fa-face-tired mr-1.5 text-tuku-accent"></i> Tingkat Mengantuk / Aktivitas
+                            </label>
+                            <select id="sleepinessLevel" onchange="calculateRecommendation()" class="w-full p-3.5 bg-tuku-bg border border-tuku-sand rounded-xl text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-tuku-accent text-tuku-primary">
+                                <option value="low">Santai / Mengantuk Ringan</option>
+                                <option value="medium" selected>Butuh Fokus Kerja / Ngantuk Sedang</option>
+                                <option value="high">Lembur / Butuh Melek Maksimal!</option>
+                            </select>
+                        </div>
+
+                        <!-- Input 2: Preferensi Rasa Base -->
+                        <div class="space-y-2">
+                            <label for="basePreference" class="block text-xs font-extrabold text-tuku-primary uppercase tracking-wider">
+                                <i class="fa-solid fa-blender mr-1.5 text-tuku-accent"></i> Basis Minuman Favorit
+                            </label>
+                            <select id="basePreference" onchange="calculateRecommendation()" class="w-full p-3.5 bg-tuku-bg border border-tuku-sand rounded-xl text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-tuku-accent text-tuku-primary">
+                                <option value="milk">Susu Gurih / Manis (Creamy)</option>
+                                <option value="black">Kopi Hitam Mantap (Bold)</option>
+                                <option value="noncoffee">Non-Kopi (Segar / Manis)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button onclick="calculateRecommendation()" class="w-full mt-6 py-3.5 bg-tuku-accent hover:bg-tuku-accentHover text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Dapatkan Rekomendasi
+                    </button>
+
+                    <!-- Output Card Hasil Rekomendasi -->
+                    <div id="caffeineResult" class="mt-6 p-5 sm:p-6 bg-tuku-sand/50 border border-tuku-sand rounded-2xl">
+                        <div class="flex flex-col sm:flex-row items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-tuku-primary text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+                                <i id="resultIcon" class="fa-solid fa-mug-hot"></i>
+                            </div>
+                            <div class="flex-grow space-y-1">
+                                <span class="text-[10px] font-extrabold uppercase tracking-widest text-tuku-accent">Rekomendasi Untukmu</span>
+                                <h3 id="resultTitle" class="text-lg font-black text-tuku-primary">Es Kopi Tetangga</h3>
+                                <p id="resultDesc" class="text-xs sm:text-sm text-tuku-muted leading-relaxed">Kombinasi sempurna double shot espresso dengan manis gurihnya gula aren dan susu segar Tuku.</p>
+                                <div class="pt-2 flex flex-wrap gap-2 text-[11px]">
+                                    <span id="resultTag1" class="px-3 py-1 bg-white rounded-lg font-bold text-tuku-primary border border-tuku-sand shadow-sm">Kafein: ~75mg</span>
+                                    <span id="resultTag2" class="px-3 py-1 bg-white rounded-lg font-bold text-tuku-primary border border-tuku-sand shadow-sm">Rasa: Creamy & Manis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MENU FAVORIT -->
+        <section id="menu" class="py-12 sm:py-16 px-4 sm:px-6 max-w-6xl mx-auto">
+            <div class="text-center max-w-xl mx-auto mb-10">
+                <span class="px-3 py-1 bg-tuku-sand text-tuku-primary text-xs font-bold tracking-widest uppercase rounded-full">Pilihan Favorit</span>
+                <h2 class="text-2xl sm:text-3xl font-black text-tuku-primary mt-2">Menu Andalan Tetangga</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Item 1 -->
+                <div class="bg-white p-5 rounded-3xl border border-tuku-sand shadow-sm flex flex-col justify-between hover:shadow-md hover:border-tuku-accent transition-all group">
+                    <div>
+                        <div class="w-full h-44 bg-tuku-sand rounded-2xl overflow-hidden mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Es Kopi Tetangga">
+                        </div>
+                        <h3 class="font-extrabold text-base text-tuku-primary">Es Kopi Tetangga</h3>
+                        <p class="text-xs text-tuku-muted mt-1 leading-relaxed">Kopi susu kekinian pertama dengan racikan khas Gula Aren Tuku.</p>
+                    </div>
+                    <div class="mt-5 pt-3 border-t border-tuku-sand flex justify-between items-center">
+                        <span class="font-black text-base text-tuku-primary">Rp 20.000</span>
+                        <button onclick="quickSelectMenu('Es Kopi Tetangga', 20000)" class="text-xs px-3.5 py-2 bg-tuku-sand text-tuku-primary font-bold rounded-xl hover:bg-tuku-accent hover:text-white transition-colors">
+                            Pesan
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white p-5 rounded-3xl border border-tuku-sand shadow-sm flex flex-col justify-between hover:shadow-md hover:border-tuku-accent transition-all group">
+                    <div>
+                        <div class="w-full h-44 bg-tuku-sand rounded-2xl overflow-hidden mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Kopi Hitam Tetangga">
+                        </div>
+                        <h3 class="font-extrabold text-base text-tuku-primary">Kopi Hitam Tetangga</h3>
+                        <p class="text-xs text-tuku-muted mt-1 leading-relaxed">Espresso shot ganda dengan rasa pahit manis alami yang bersih.</p>
+                    </div>
+                    <div class="mt-5 pt-3 border-t border-tuku-sand flex justify-between items-center">
+                        <span class="font-black text-base text-tuku-primary">Rp 18.000</span>
+                        <button onclick="quickSelectMenu('Kopi Hitam Tetangga', 18000)" class="text-xs px-3.5 py-2 bg-tuku-sand text-tuku-primary font-bold rounded-xl hover:bg-tuku-accent hover:text-white transition-colors">
+                            Pesan
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-white p-5 rounded-3xl border border-tuku-sand shadow-sm flex flex-col justify-between hover:shadow-md hover:border-tuku-accent transition-all group">
+                    <div>
+                        <div class="w-full h-44 bg-tuku-sand rounded-2xl overflow-hidden mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Cokelat Tetangga">
+                        </div>
+                        <h3 class="font-extrabold text-base text-tuku-primary">Cokelat Tetangga</h3>
+                        <p class="text-xs text-tuku-muted mt-1 leading-relaxed">Minuman cokelat kaya rasa tanpa kafein, cocok untuk segala suasana.</p>
+                    </div>
+                    <div class="mt-5 pt-3 border-t border-tuku-sand flex justify-between items-center">
+                        <span class="font-black text-base text-tuku-primary">Rp 22.000</span>
+                        <button onclick="quickSelectMenu('Cokelat Tetangga', 22000)" class="text-xs px-3.5 py-2 bg-tuku-sand text-tuku-primary font-bold rounded-xl hover:bg-tuku-accent hover:text-white transition-colors">
+                            Pesan
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-white p-5 rounded-3xl border border-tuku-sand shadow-sm flex flex-col justify-between hover:shadow-md hover:border-tuku-accent transition-all group">
+                    <div>
+                        <div class="w-full h-44 bg-tuku-sand rounded-2xl overflow-hidden mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Earl Grey Milk Tea">
+                        </div>
+                        <h3 class="font-extrabold text-base text-tuku-primary">Earl Grey Milk Tea</h3>
+                        <p class="text-xs text-tuku-muted mt-1 leading-relaxed">Teh aromatik Earl Grey dipadu dengan kesegaran susu pilihan.</p>
+                    </div>
+                    <div class="mt-5 pt-3 border-t border-tuku-sand flex justify-between items-center">
+                        <span class="font-black text-base text-tuku-primary">Rp 20.000</span>
+                        <button onclick="quickSelectMenu('Earl Grey Milk Tea', 20000)" class="text-xs px-3.5 py-2 bg-tuku-sand text-tuku-primary font-bold rounded-xl hover:bg-tuku-accent hover:text-white transition-colors">
+                            Pesan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FITUR INTERAKTIF 2 & 3: CUSTOM ORDER BUILDER & DIRECT WHATSAPP -->
+        <section id="order" class="py-12 sm:py-16 bg-tuku-sand/40 border-t border-tuku-sand">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <div class="text-center max-w-xl mx-auto mb-8">
+                    <span class="px-3 py-1 bg-tuku-accent/10 text-tuku-accent text-xs font-bold tracking-widest uppercase rounded-full">Fitur Interaktif #2 & #3</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-tuku-primary mt-2">Racik Pesanan & Kirim WhatsApp</h2>
+                    <p class="text-tuku-muted text-xs sm:text-sm mt-2">Kustomisasi pesanan kopi Anda dan kirim langsung ke WhatsApp Toko Kopi Tuku.</p>
+                </div>
+
+                <div class="bg-white p-5 sm:p-8 rounded-3xl shadow-lg border border-tuku-sand">
+                    <form id="orderForm" onsubmit="event.preventDefault();" class="space-y-6">
+                        
+                        <!-- Choice 1: Minuman Base -->
+                        <div class="space-y-2">
+                            <label for="itemSelect" class="block text-xs font-extrabold text-tuku-primary uppercase tracking-wider">1. Pilih Minuman Kopi / Non-Kopi</label>
+                            <select id="itemSelect" onchange="updatePrice()" class="w-full p-3.5 bg-tuku-bg border border-tuku-sand rounded-xl text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-tuku-accent text-tuku-primary">
+                                <option value="Es Kopi Tetangga" data-price="20000">Es Kopi Tetangga (Rp 20.000)</option>
+                                <option value="Kopi Hitam Tetangga" data-price="18000">Kopi Hitam Tetangga (Rp 18.000)</option>
+                                <option value="Cokelat Tetangga" data-price="22000">Cokelat Tetangga (Rp 22.000)</option>
+                                <option value="Earl Grey Milk Tea" data-price="20000">Earl Grey Milk Tea (Rp 20.000)</option>
+                                <option value="Tukucino" data-price="24000">Tukucino (Rp 24.000)</option>
+                            </select>
+                        </div>
+
+                        <!-- Choice 2: Customization Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Sugar Level -->
+                            <div class="space-y-2">
+                                <label for="sugarLevel" class="block text-xs font-extrabold text-tuku-primary uppercase tracking-wider">2. Level Manis (Gula Aren)</label>
+                                <select id="sugarLevel" class="w-full p-3.5 bg-tuku-bg border border-tuku-sand rounded-xl text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-tuku-accent text-tuku-primary">
+                                    <option value="Normal Sugar (100%)">Normal Sugar (100%)</option>
+                                    <option value="Less Sugar (50%)">Less Sugar (50%)</option>
+                                    <option value="No Sugar (0%)">No Sugar (0%)</option>
+                                </select>
+                            </div>
+
+                            <!-- Ice Level -->
+                            <div class="space-y-2">
+                                <label for="iceLevel" class="block text-xs font-extrabold text-tuku-primary uppercase tracking-wider">3. Takaran Es</label>
+                                <select id="iceLevel" class="w-full p-3.5 bg-tuku-bg border border-tuku-sand rounded-xl text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-tuku-accent text-tuku-primary">
+                                    <option value="Normal Ice">Normal Ice</option>
+                                    <option value="Less Ice">Less Ice</option>
+                                    <option value="No Ice">No Ice (Tanpa Es)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Choice 3: Extra Topping / Add-on -->
+                        <div class="space-y-2">
+                            <label class="block text-xs font-extrabold text-tuku-primary uppercase tracking-wider">4. Ekstra Tambahan (Topping)</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <label class="flex items-center gap-3 p-3.5 bg-tuku-bg rounded-xl border border-tuku-sand cursor-pointer text-xs font-semibold text-tuku-primary hover:border-tuku-accent transition-colors">
+                                    <input type="checkbox" id="extraShot" value="Extra Espresso Shot" data-addon-price="5000" onchange="updatePrice()" class="w-4 h-4 rounded text-tuku-accent focus:ring-tuku-accent border-tuku-sand">
+                                    <span>Extra Shot Espresso (+Rp 5.000)</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3.5 bg-tuku-bg rounded-xl border border-tuku-sand cursor-pointer text-xs font-semibold text-tuku-primary hover:border-tuku-accent transition-colors">
+                                    <input type="checkbox" id="extraJelly" value="Grass Jelly" data-addon-price="4000" onchange="updatePrice()" class="w-4 h-4 rounded text-tuku-accent focus:ring-tuku-accent border-tuku-sand">
+                                    <span>Grass Jelly / Cincau (+Rp 4.000)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Choice 4: Quantity & Customer Notes -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="space-y-2">
+                                <label class="block text-xs font-extrabold text-tuku-primary uppercase tracking-wider">Jumlah Cup</label>
+                                <div class="flex items-center">
+                                    <button type="button" onclick="changeQty(-1)" aria-label="Kurangi Jumlah" class="w-12 h-12 bg-tuku-sand rounded-l-xl font-black text-lg text-tuku-primary hover:bg-tuku-secondary hover:text-white transition-colors">-</button>
+                                    <input type="number" id="qtyInput" value="1" min="1" readonly class="w-full h-12 bg-tuku-bg border-y border-tuku-sand text-center font-black text-base text-tuku-primary focus:outline-none">
+                                    <button type="button" onclick="changeQty(1)" aria-label="Tambah Jumlah" class="w-12 h-12 bg-tuku-sand rounded-r-xl font-black text-lg text-tuku-primary hover:bg-tuku-secondary hover:text-white transition-colors">+</button>
+                                </div>
+                            </div>
+                            <div class="sm:col-span-2 space-y-2">
+                                <label for="orderNotes" class="block text-xs font-extrabold text-tuku-primary uppercase tracking-wider">Catatan Tambahan (Opsional)</label>
+                                <input type="text" id="orderNotes" placeholder="Contoh: Titip es dipisah, yah..." class="w-full p-3.5 bg-tuku-bg border border-tuku-sand rounded-xl text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-tuku-accent text-tuku-primary">
+                            </div>
+                        </div>
+
+                        <!-- Real-time Price Banner -->
+                        <div class="bg-tuku-primary text-white p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-4 shadow-md">
+                            <div class="text-center sm:text-left">
+                                <span class="text-[10px] text-tuku-sand uppercase tracking-widest font-extrabold">Total Biaya Pesanan</span>
+                                <div id="totalPriceDisplay" class="text-2xl sm:text-3xl font-black text-white">Rp 20.000</div>
+                            </div>
+                            <!-- FITUR 3: Direct WA Button -->
+                            <button onclick="sendToWhatsApp()" type="button" class="w-full sm:w-auto px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2.5">
+                                <i class="fa-brands fa-whatsapp text-xl"></i> Kirim Ke WhatsApp Tuku
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOKASI & KONTAK -->
+        <section id="lokasi" class="py-12 sm:py-16 px-4 sm:px-6 max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4">
+                    <span class="px-3 py-1 bg-tuku-sand text-tuku-primary text-xs font-bold tracking-widest uppercase rounded-full">Lokasi Tetangga</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-tuku-primary">Mampir Ke Toko Kopi Tuku</h2>
+                    <p class="text-tuku-muted text-xs sm:text-sm leading-relaxed">
+                        Kami selalu senang menyapa Tetangga Tuku secara langsung. Temukan cabang terdekat di kotamu dan nikmati suasana hangat toko kami.
+                    </p>
+
+                    <div class="space-y-3.5 pt-2 text-xs sm:text-sm text-tuku-primary">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-tuku-accent text-lg mt-0.5"></i>
+                            <div>
+                                <strong>Toko Kopi Tuku - Cipete (Pusat)</strong>
+                                <p class="text-xs text-tuku-muted mt-0.5">Jl. Cipete Raya No.7, Jakarta Selatan</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-clock text-tuku-accent text-lg mt-0.5"></i>
+                            <div>
+                                <strong>Jam Operasional</strong>
+                                <p class="text-xs text-tuku-muted mt-0.5">Senin - Minggu: 07:00 - 21:00 WIB</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-phone text-tuku-accent text-lg mt-0.5"></i>
+                            <div>
+                                <strong>Layanan Pelanggan / WhatsApp</strong>
+                                <p class="text-xs text-tuku-muted mt-0.5">+62 812-3456-7890</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Map Preview Simulated -->
+                <div class="bg-tuku-sand/60 rounded-3xl p-6 sm:p-8 border border-tuku-sand shadow-sm flex flex-col items-center justify-center text-center space-y-4">
+                    <div class="w-16 h-16 rounded-2xl bg-tuku-accent/10 flex items-center justify-center text-tuku-accent text-3xl">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h3 class="font-extrabold text-tuku-primary text-lg">Cari Cabang Tuku Terdekat</h3>
+                    <p class="text-xs text-tuku-muted max-w-xs">Tersedia di Jakarta, Tangerang, Surabaya, Bandung, dan kota-kota tetangga lainnya.</p>
+                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-tuku-primary text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-tuku-primaryDark transition-colors shadow-md">
+                        Buka Google Maps
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-tuku-primary text-tuku-sand border-t border-tuku-primaryDark py-8 px-4 text-center">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+            <div class="flex items-center gap-2">
+                <div class="w-7 h-7 rounded-full bg-tuku-accent text-white flex items-center justify-center font-black text-xs">T</div>
+                <span class="font-bold tracking-wider text-white">TOKO KOPI TUKU</span>
+            </div>
+            <p>&copy; 2026 Toko Kopi Tuku. Dibuat untuk Tetangga Tuku.</p>
+            <div class="flex gap-4 text-base text-tuku-sand">
+                <a href="#" aria-label="Instagram" class="hover:text-tuku-accent transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="TikTok" class="hover:text-tuku-accent transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" aria-label="Twitter" class="hover:text-tuku-accent transition-colors"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- 1. MOBILE MENU TOGGLE ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            menuIcon.className = isHidden ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars';
+            });
+        });
+
+        // --- 2. FITUR INTERAKTIF 1: KALKULATOR KAFEIN & REKOMENDASI ---
+        function calculateRecommendation() {
+            const sleepiness = document.getElementById('sleepinessLevel').value;
+            const base = document.getElementById('basePreference').value;
+            
+            const resultBox = document.getElementById('caffeineResult');
+            const resultTitle = document.getElementById('resultTitle');
+            const resultDesc = document.getElementById('resultDesc');
+            const resultTag1 = document.getElementById('resultTag1');
+            const resultTag2 = document.getElementById('resultTag2');
+            const resultIcon = document.getElementById('resultIcon');
+
+            let recommendation = {
+                title: "Es Kopi Tetangga",
+                desc: "Kopi Susu khas Tuku dengan racikan Espresso, Susu Segar, dan Gula Aren asli.",
+                tag1: "Kafein: ~75mg",
+                tag2: "Rasa: Creamy & Manis",
+                icon: "fa-mug-hot"
+            };  
+
+            if (base === 'noncoffee') {
+                if (sleepiness === 'high') {
+                    recommendation = {
+                        title: "Earl Grey Milk Tea",
+                        desc: "Teh aromatik Earl Grey segar dengan paduan susu lembut untuk menyegarkan pikiran.",
+                        tag1: "Kafein: ~30mg (Teh)",
+                        tag2: "Rasa: Aromatik & Segar",
+                        icon: "fa-glass-water"
+                    };
+                } else {
+                    recommendation = {
+                        title: "Cokelat Tetangga",
+                        desc: "Minuman cokelat manis gurih yang nyaman di perut dan membuat pikiran santai.",
+                        tag1: "Bebas Kafein",
+                        tag2: "Rasa: Manis & Rich",
+                        icon: "fa-mug-saucer"
+                    };
+                }
+            } else if (base === 'black') {
+                if (sleepiness === 'high') {
+                    recommendation = {
+                        title: "Double Espresso Tetangga",
+                        desc: "Ekstraksi kopi murni double shot tanpa gula untuk daya melek maksimal saat lembur.",
+                        tag1: "Kafein: ~150mg (Tinggi)",
+                        tag2: "Rasa: Bold & Pahit Alami",
+                        icon: "fa-bolt"
+                    };
+                } else {
+                    recommendation = {
+                        title: "Kopi Hitam Tetangga",
+                        desc: "Espresso khas Tuku disajikan dingin/panas dengan tingkat keasaman dan manis seimbang.",
+                        tag1: "Kafein: ~90mg",
+                        tag2: "Rasa: Clean & Nutty",
+                        icon: "fa-fire"
+                    };
+                }
+            } else { // milk base
+                if (sleepiness === 'high') {
+                    recommendation = {
+                        title: "Tukucino + Extra Shot",
+                        desc: "Capuccino khas Tuku dengan foam susu tebal plus ekstra shot espresso.",
+                        tag1: "Kafein: ~140mg",
+                        tag2: "Rasa: Espresso Strong & Rich",
+                        icon: "fa-cloud"
+                    };
+                } else if (sleepiness === 'low') {
+                    recommendation = {
+                        title: "Es Kopi Tetangga (Less Sugar)",
+                        desc: "Pilihan ringan nan santai untuk menemani waktu senggang tanpa terlalu manis.",
+                        tag1: "Kafein: ~75mg",
+                        tag2: "Rasa: Mild & Creamy",
+                        icon: "fa-face-smile"
+                    };
+                }
+            }
+
+            // Apply to DOM
+            resultTitle.innerText = recommendation.title;
+            resultDesc.innerText = recommendation.desc;
+            resultTag1.innerText = recommendation.tag1;
+            resultTag2.innerText = recommendation.tag2;
+            resultIcon.className = `fa-solid ${recommendation.icon}`;
+
+            resultBox.classList.remove('hidden');
+        }
+
+        // --- 3. FITUR INTERAKTIF 2: CUSTOM ORDER BUILDER & PRICE CALCULATOR ---
+        function getSinglePrice() {
+            const itemSelect = document.getElementById('itemSelect');
+            const selectedOption = itemSelect.options[itemSelect.selectedIndex];
+            let basePrice = parseInt(selectedOption.getAttribute('data-price')) || 0;
+
+            if (document.getElementById('extraShot').checked) {
+                basePrice += parseInt(document.getElementById('extraShot').getAttribute('data-addon-price'));
+            }
+            if (document.getElementById('extraJelly').checked) {
+                basePrice += parseInt(document.getElementById('extraJelly').getAttribute('data-addon-price'));
+            }
+
+            return basePrice;
+        }
+
+        function updatePrice() {
+            const singlePrice = getSinglePrice();
+            const qty = parseInt(document.getElementById('qtyInput').value) || 1;
+            const  totalPrice = singlePrice * qty;
+
+            document.getElementById('totalPriceDisplay').innerText = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+        }
+
+        function changeQty(amount) {
+            const qtyInput = document.getElementById('qtyInput');
+            let currentQty = parseInt(qtyInput.value) || 1;
+            currentQty += amount;
+            if (currentQty < 1) currentQty = 1;
+            qtyInput.value = currentQty;
+            updatePrice();
+        }
+
+        function quickSelectMenu(menuName, price) {
+            const itemSelect = document.getElementById('itemSelect');
+            for (let i = 0; i < itemSelect.options.length; i++) {
+                if (itemSelect.options[i].value === menuName) {
+                    itemSelect.selectedIndex = i;
+                    break;
+                }
+            }
+            updatePrice();
+            document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- 4. FITUR INTERAKTIF 3: DIRECT ORDER GENERATOR TO WHATSAPP ---
+        function sendToWhatsApp() {
+            const item = document.getElementById('itemSelect').value;
+            const sugar = document.getElementById('sugarLevel').value;
+            const ice = document.getElementById('iceLevel').value;
+            const qty = document.getElementById('qtyInput').value;
+            const notes = document.getElementById('orderNotes').value.trim();
+            const totalPriceText = document.getElementById('totalPriceDisplay').innerText;
+
+            let addOns = [];
+            if (document.getElementById('extraShot').checked) addOns.push("Extra Shot Espresso (+5rb)");
+            if (document.getElementById('extraJelly').checked) addOns.push("Grass Jelly (+4rb)");
+            const addOnsText = addOns.length > 0 ? addOns.join(", ") : "Tidak ada";
+
+            const waNumber = "6281234567890"; // Nomor WhatsApp Admin Tuku Dummy
+
+            let message = `Halo Toko Kopi Tuku! Saya mau pesan pesanan Tetangga:\n\n`;
+            message += `📌 *Detail Pesanan:*\n`;
+            message += `• *Minuman:* ${item}\n`;
+            message += `• *Jumlah:* ${qty} Cup\n`;
+            message += `• *Gula:* ${sugar}\n`;
+            message += `• *Es:* ${ice}\n`;
+            message += `• *Topping/Extra:* ${addOnsText}\n`;
+            if (notes) {
+                message += `• *Catatan:* ${notes}\n`;
+            }
+            message += `\n💰 *Total Biaya:* ${totalPriceText}\n\n`;
+            message += `Mohon konfirmasi ketersediaan dan cara pembayarannya. Terima kasih Tetangga Tuku!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${waNumber}?text=${encodedMessage}`, '_blank');
+        }
+
+        // Initial Price Load & Recommendation Setup
+        window.onload = function() {
+            updatePrice();
+            calculateRecommendation();
+        }
+    </script>
+</body>
+</html>
